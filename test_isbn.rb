@@ -103,5 +103,10 @@ class TestISBN < Minitest::Test
 		assert_equal(true, results)
 	end
 
+		def test_if_remainder_equals_checkdigit_false
+		results = compare_remain_to_check('877&95869x')
+		assert_equal(false, results)
+	end
+
 
 end	

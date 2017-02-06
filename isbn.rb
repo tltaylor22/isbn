@@ -3,6 +3,10 @@ valid_isbn_length(isbn_num)
 isbn_remove_spaces_dashes(isbn_num)
 check_for_letters(isbn_num)
 check_for_x_last(isbn_num)
+check_for_symbol(isbn_num)
+isbn_array(isbn_num)
+compare_remain_to_check(isbn_num)
+
 end
 
 def valid_isbn_length?(isbn_num)
@@ -80,9 +84,9 @@ def remainder(sum)
 end
 
 def compare_remain_to_check(isbn_num)
-	isbn_value = multiply(isbn_num)
-	isbn_total = sum(isbn_value)
-	isbn_mod = remainder(isbn_total)
+	isbn_value = multiply(isbn_num) # created a variable of the multiply function in which we pass the isbn number
+	isbn_total = sum(isbn_value) # created a variable for the sum function in which we have to pass the newly created variable isbn_value through
+	isbn_mod = remainder(isbn_total) # created a variable for the remainder function in which we are passing the newly created isbn_total function: now all of our functions are runnning under the function compare_remain_to_check function
 
 		if isbn_mod == 10 && isbn_num[-1].match(/[xX]/)
 			true
