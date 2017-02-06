@@ -83,4 +83,8 @@ class TestISBN < Minitest::Test
 		assert_equal([1, 4, 9, 16, 25, 36, 49, 64, 81], results)
 	end
 
+	def test_add_value_index_totals
+		results = sum([1, 2, 3, 4, 5, 6, 7, 8, 9])
+		assert_equal(45, results)
+	end
 end	

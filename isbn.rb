@@ -66,4 +66,13 @@ end
 	isbn_values
 end
 
+def sum(isbn_array)
+	# isbn_array.inject(:+) # adds the sum of integers in our array
+	counter = 0 # empty counter
+	isbn_array.each do |value| # looping through the array and taking the value of each
+	counter += value # OR counter = counter + value - adding each value to the counter
+	end # ends the loop
+	counter	# returning/calling the counter
+end
+
 
