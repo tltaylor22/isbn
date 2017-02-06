@@ -75,4 +75,9 @@ def sum(isbn_array)
 	counter	# returning/calling the counter
 end
 
+def remainder(isbn_num)
+	isbn_num % 11
+
+end
+
 
