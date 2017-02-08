@@ -103,10 +103,54 @@ class TestISBN < Minitest::Test
 		assert_equal(true, results)
 	end
 
-		def test_if_remainder_equals_checkdigit_false
+	def test_if_remainder_equals_checkdigit_false
 		results = compare_remain_to_check('877&95869x')
+		assert_equal(false, results)
+	end
+	
+	def test_if_remainder_equals_checkdigit_true2
+		results = compare_remain_to_check('0132971291')
+		assert_equal(true, results)
+	end
+
+	def test_if_remainder_equals_checkdigit_false2
+		results = compare_remain_to_check('877&958x')
 		assert_equal(false, results)
 	end
 
 
+
+	# def test_valid_isbn_true
+	# 	results = valid_isbn?('0132971291')
+	# 	assert_equal(true, results)
+	# end
+
+	# def test_valid_isbn_false
+	# 	results = valid_isbn?('0132971291&&567X')
+	# 	assert_equal(false, results)
+	# end
+
 end	
+
+class TestISBN13 < Minitest::Test 
+
+	def test_1_equal_1
+		assert_equal(1,1)
+	end
+
+	def test_for_odd_index_locations
+		isbn_array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
+		assert_equal([1, 3, 5, 7, 9, 11, 13], odd_index_locations(isbn_array))
+	end
+
+	def test_for_even_index_locations
+		isbn_array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
+		assert_equal([2, 4, 6, 8, 10, 12], even_index_locations(isbn_array))
+	end
+
+	# def test_add_value_index_totals_13_digits
+	# 	isbn_array = ([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13])
+	# 	assert_equal(175, results)
+	# end
+
+end

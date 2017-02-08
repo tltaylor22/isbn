@@ -1,11 +1,14 @@
 def valid_isbn?(isbn_num) # ? passing a string to get a boolean (TorF)
-valid_isbn_length(isbn_num)
-isbn_remove_spaces_dashes(isbn_num)
-check_for_letters(isbn_num)
-check_for_x_last(isbn_num)
-check_for_symbol(isbn_num)
-isbn_array(isbn_num)
-compare_remain_to_check(isbn_num)
+	string_no_dash_or_space = isbn_remove_spaces_dashes(isbn_num)
+		if valid_isbn_length?(string_no_dash_or_space)
+			true
+		else
+			false
+		end
+	# check_for_letters(isbn_remove_spaces_dashes)
+	# check_for_x_last(check_for_letters)
+	# check_for_symbol()
+	# compare_remain_to_check(isbn_num)
 
 end
 
@@ -19,7 +22,7 @@ end
 
 def isbn_remove_spaces_dashes(isbn_num)
 	isbn_num.gsub(/[ -]/, '') # a regex to sub out spaces and dashes 
-	# OR isbn_num.delete(' ' '-') # (!) after delete makes it perminent
+	# OR isbn_num.delete!(' ' '-') # (!) after delete makes it perminent
 end
 
 def check_for_letters(isbn_num)
@@ -45,14 +48,6 @@ def check_for_symbol(isbn_num)
 		false
 	end
 end	
-
-# def check_valid_number_or_X_position(isbn_num)
-# 	if isbn_num[0..12].match(/\D/) && isbn_num[-1].match(/[0-9xX]/)
-# 		true
-# 	else
-# 		false
-# 	end
-# end	
 
 def isbn_array(isbn_num)
 	isbn_array = isbn_num.split(//) # splits the string to create an array of individual numbers ["1", "2", etc]
@@ -90,9 +85,19 @@ def compare_remain_to_check(isbn_num)
 
 		if isbn_mod == 10 && isbn_num[-1].match(/[xX]/)
 			true
-		elsif isbn_mod != 10 && isbn_num[-1] == isbn_mod
-			true
+		elsif
+			isbn_num[-1].to_i == isbn_mod
+				true
 		else
 			false
 		end
 end
+
+def odd_index_locations(isbn_array)
+	isbn_array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13].select {|x| x % 2 == 1}
+end
+
+def even_index_locations(isbn_array)
+	isbn_array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13].select {|x| x % 2 == 0}
+end
+
