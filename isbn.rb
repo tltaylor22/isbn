@@ -93,11 +93,17 @@ def compare_remain_to_check(isbn_num)
 		end
 end
 
-def odd_index_locations(isbn_array)
-	isbn_array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13].select {|x| x % 2 == 1}
-end
-
 def even_index_locations(isbn_array)
-	isbn_array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13].select {|x| x % 2 == 0}
+	isbn_array.values_at(* isbn_array.each_index.select {|i| i.even?})
 end
 
+def odd_index_locations(isbn_array)
+	isbn_array.values_at(* isbn_array.each_index.select {|i| i.odd?})
+end
+
+# def sum_isbn_13(isbn_array)
+# 	isbn_array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
+# 	isbn_13_odd = isbn_num.select {|x| x % 2 == 1} * 1
+# 	isbn_13_even = isbn_num.select {|x| x % 2 == 0} * 3
+# 	isbn_13_odd + isbn_13_even
+# end

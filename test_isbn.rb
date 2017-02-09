@@ -138,15 +138,16 @@ class TestISBN13 < Minitest::Test
 		assert_equal(1,1)
 	end
 
-	def test_for_odd_index_locations
-		isbn_array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
-		assert_equal([1, 3, 5, 7, 9, 11, 13], odd_index_locations(isbn_array))
+	def test_for_even_index_locations
+		isbn_array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 1, 2, 3, 4]
+		assert_equal([1, 3, 5, 7, 9, 2, 4], even_index_locations(isbn_array))
 	end
 
-	def test_for_even_index_locations
-		isbn_array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
-		assert_equal([2, 4, 6, 8, 10, 12], even_index_locations(isbn_array))
+	def test_for_odd_index_locations
+		isbn_array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 1, 2, 3, 4]
+		assert_equal([2, 4, 6, 8, 1, 3], odd_index_locations(isbn_array))
 	end
+
 
 	# def test_add_value_index_totals_13_digits
 	# 	isbn_array = ([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13])
