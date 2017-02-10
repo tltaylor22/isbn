@@ -43,9 +43,9 @@ end
 
 def check_for_symbol(isbn_num)
 	if isbn_num.chop =~ /\D/ # checking to see if there are symbols in the string. \D is the same as [^0-9] (everything except digits) - Not sure if I need to check the 9 spot using the tilde or not???? .chop removes the last digit in the string
-		true
-	else
 		false
+	else
+		true
 	end
 end	
 
@@ -53,7 +53,7 @@ def isbn_array(isbn_num)
 	isbn_array = isbn_num.split(//) # splits the string to create an array of individual numbers ["1", "2", etc]
 end
 
-def multiply(isbn_num)
+def multiply_10(isbn_num)
 	isbn_values = []
 	isbn_array = isbn_num.split('')
 	isbn_array.each_with_index do |value, index|
@@ -79,7 +79,7 @@ def remainder(sum)
 end
 
 def compare_remain_to_check(isbn_num)
-	isbn_value = multiply(isbn_num) # created a variable of the multiply function in which we pass the isbn number
+	isbn_value = multiply_10(isbn_num) # created a variable of the multiply function in which we pass the isbn number
 	isbn_total = sum(isbn_value) # created a variable for the sum function in which we have to pass the newly created variable isbn_value through
 	isbn_mod = remainder(isbn_total) # created a variable for the remainder function in which we are passing the newly created isbn_total function: now all of our functions are runnning under the function compare_remain_to_check function
 
@@ -91,19 +91,32 @@ def compare_remain_to_check(isbn_num)
 		else
 			false
 		end
+
 end
 
-def even_index_locations(isbn_array)
-	isbn_array.values_at(* isbn_array.each_index.select {|i| i.even?})
-end
+def valid_isbn_13?(isbn_num) # takes a string and returns a boolean
+	# isbn13_array = isbn_num.split('')
+	# array13_index = []
+	# isbn13_array.each do |index|
+	# array13_index << index.to_i
+	# end
+	#OR 1 line to do the work of the four above
+	isbn13_array = isbn_num.split('').map(&:to_i)
+	sum = 0
+	check_digit = 0
+		isbn13_array.each_with_index do |value, index|
+			break if index == 12
+			if index % 2 == 0
+				sum += value + 1
+			else
+				sum += value = 3
+			end
+		end
+	sum = sum % 10
+	check_digit = 10 - sum
+		if check_digit == 10
+			check_digit = 0
+		end 
+	isbn13_array[12] == check_digit		
 
-def odd_index_locations(isbn_array)
-	isbn_array.values_at(* isbn_array.each_index.select {|i| i.odd?})
 end
-
-# def sum_isbn_13(isbn_array)
-# 	isbn_array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
-# 	isbn_13_odd = isbn_num.select {|x| x % 2 == 1} * 1
-# 	isbn_13_even = isbn_num.select {|x| x % 2 == 0} * 3
-# 	isbn_13_odd + isbn_13_even
-# end
