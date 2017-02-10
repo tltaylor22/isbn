@@ -106,7 +106,7 @@ def valid_isbn_13?(isbn_num) # takes a string and returns a boolean
 	check_digit = 0
 		isbn13_array.each_with_index do |value, index|
 			break if index == 12
-			if index % 2 == 0
+			if index % 2 == 0 
 				sum += value + 1
 			else
 				sum += value = 3
