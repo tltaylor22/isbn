@@ -131,15 +131,15 @@ class TestIsbn13 < Minitest::Test
 		assert_equal(1, results)
 	end
 
-	# def test_remainder_equals_checkdigit_true
-	# 	results = compare_remain_to_check('877195869x')
-	# 	assert_equal(true, results)
-	# end
+	def test_remainder_equals_checkdigit_true
+		results = compare_remain_to_check('877195869x')
+		assert_equal(true, results)
+	end
 
-	# def test_remainder_equals_checkdigit_false
-	# 	results = compare_remain_to_check('877&95869x')
-	# 	assert_equal(false, results)
-	# end
+	def test_remainder_equals_checkdigit_false
+		results = compare_remain_to_check('877&95869x')
+		assert_equal(false, results)
+	end
 
 	# def test_valid_isbn_13
 	# 	isbn13 = '9780470059029'
