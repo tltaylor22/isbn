@@ -148,7 +148,8 @@ class TestIsbn13 < Minitest::Test
 
 	def test_valid_isbn_13_true
 		isbn13 = '978-0-13-297129-4'
-		assert_equal(true, valid_isbn_13?(isbn13))
+		assert_equal(false, valid_isbn_13?(isbn13))
 	end
+
 end
 

@@ -1,17 +1,3 @@
-def valid_isbn?(isbn_num) # ? passing a string to get a boolean (TorF)
-	string_no_dash_or_space = isbn_remove_spaces_dashes(isbn_num)
-		if valid_isbn_length?(string_no_dash_or_space)
-			true
-		else
-			false
-		end
-	# check_for_letters(isbn_remove_spaces_dashes)
-	# check_for_x_last(check_for_letters)
-	# check_for_symbol()
-	# compare_remain_to_check(isbn_num)
-
-end
-
 def valid_isbn_length?(isbn_num)
 	if isbn_num.length == 10 || isbn_num.length == 13
 		true
@@ -118,5 +104,17 @@ def valid_isbn_13?(isbn_num) # takes a string and returns a boolean
 			check_digit = 0
 		end 
 	isbn13_array[12] == check_digit		
+
+end
+
+def valid_isbn?(isbn_num) # ? passing a string to get a boolean (TorF)
+	string_no_dash_or_space = isbn_remove_spaces_dashes(isbn_num)
+		if check_for_symbol(string_no_dash_or_space) && isbn_remove_spaces_dashes.length == 10
+			check_for_letters(string_no_dash_or_space)
+			check_for_x_last(string_no_dash_or_space)
+			compare_remain_to_check(string_no_dash_or_space)
+		else
+			false
+		end
 
 end
