@@ -109,7 +109,7 @@ end
 
 def valid_isbn?(isbn_num) # ? passing a string to get a boolean (TorF)
 	string_no_dash_or_space = isbn_remove_spaces_dashes(isbn_num)
-		if check_for_symbol(string_no_dash_or_space) && isbn_remove_spaces_dashes.length == 10
+		if check_for_symbol(string_no_dash_or_space) && string_no_dash_or_space.length == 10
 			check_for_letters(string_no_dash_or_space)
 			check_for_x_last(string_no_dash_or_space)
 			compare_remain_to_check(string_no_dash_or_space)

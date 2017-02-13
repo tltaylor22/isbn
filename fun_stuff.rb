@@ -21,5 +21,12 @@ def odd_index_locations(isbn_array)
 	isbn_13_odd = isbn_array.values_at(* isbn_array.each_index.select {|i| i.odd?}) 
 end
 
-# the above will index even and odd position in the array
+# the above and below will index even and odd position in the array
+a = ('a'..'z').to_a
+
+a.values_at(* a.each_index.select {|i| i.even?})
+# => ["a", "c", "e", "g", "i", "k", "m", "o", "q", "s", "u", "w", "y"]
+
+a.values_at(* a.each_index.select {|i| i.odd?})
+# => ["b", "d", "f", "h", "j", "l", "n", "p", "r", "t", "v", "x", "z"]
 
